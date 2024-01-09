@@ -8,34 +8,52 @@ class Node:
 '''
 
 class Solution:
-    def reverse_list(self,head):
-        prev = None
-        current = head
-        while current:
-            next_node = current.next
-            current.next = prev
-            prev = current
-            current = next_node
-        return prev
+    # def reverse_list(self,head):
+    #     prev = None
+    #     current = head
+    #     while current:
+    #         next_node = current.next
+    #         current.next = prev
+    #         prev = current
+    #         current = next_node
+    #     return prev
     
     def mergeResult(self, h1, h2):
    
-        dummy = Node(0)
-        current = dummy
-        while h1 and h2 :
-            if h1.data <= h2.data: #comparing values and append nodes
-                current.next = h1
-                h1 = h1.next
-            else:
-                current.next = h2
-                h2 = h2.next
+    #     dummy = Node(0)
+    #     current = dummy
+    #     while h1 and h2 :
+    #         if h1.data <= h2.data: #comparing values and append nodes
+    #             current.next = h1
+    #             h1 = h1.next
+    #         else:
+    #             current.next = h2
+    #             h2 = h2.next
             
-            current = current.next #moving ptr of the merged list
+    #         current = current.next #moving ptr of the merged list
         
-        current.next = h1 or h2
-        result = self.reverse_list(dummy.next)
-        return result
-        
+    #     current.next = h1 or h2
+    #     result = self.reverse_list(dummy.next)
+    #     return result
+        def fun(head):
+            current=head
+            l=[]
+            while current is not None:
+                l.append(current.data)
+                current=current.next
+            return l
+        l1=fun(h1)
+        l2=fun(h2)
+        p=l1+l2
+        p.sort(reverse=True)
+        if not p:
+            return None
+        head=Node(p[0])
+        current=head
+        for i in p[1:]:
+            current.next=Node(i)
+            current=current.next
+        return head
 
 
 #{ 
