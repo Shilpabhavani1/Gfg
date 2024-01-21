@@ -67,37 +67,37 @@ struct Node {
 //Function to insert a node in the middle of the linked list.
 Node* insertInMiddle(Node* head, int x)
 {
-// 	// Code here
-    Node* p=new Node(x);
-    if(head==NULL) return p;
-    int c=1;
-    Node* t=head;
-    while(t->next!=NULL)
-    {
-        t=t->next;
-        c++;
-    }
-    int i=1;
-    t=head;
-    int k;
-    if(c%2!=0)
-    {
-        k=(c/2)+1;
-    }
-    else
-    {
-        k=c/2;
-    }
-    while(i<k)
-    {
-        t=t->next;
-        i++;
-    }
-    Node* temp=t->next;
-    t->next=p;
-    p->next=temp;
-    return head;
-}
+// // // 	// Code here
+//     Node* p=new Node(x);
+//     if(head==NULL) return p;
+//     int c=1;
+//     Node* t=head;
+//     while(t->next!=NULL)
+//     {
+//         t=t->next;
+//         c++;
+//     }
+//     int i=1;
+//     t=head;
+//     int k;
+//     if(c%2!=0)
+//     {
+//         k=(c/2)+1;
+//     }
+//     else
+//     {
+//         k=c/2;
+//     }
+//     while(i<k)
+//     {
+//         t=t->next;
+//         i++;
+//     }
+//     Node* temp=t->next;
+//     t->next=p;
+//     p->next=temp;
+//     return head;
+// }
 
 
 
@@ -108,42 +108,49 @@ Node* insertInMiddle(Node* head, int x)
 
 
 // 	Node* p=new Node(x);
-// 	if(head==NULL) return p;
-// 	Node* t=head;
-// 	Node* r=head;
-// 	while(r!=NULL and r->next!=NULL)
-// 	{
-// 	    t=t->next;
-// 	    r=r->next->next;
-// 	}
-// 	if(r!=NULL)
-// 	{
-// 	    r=t->next;
-// 	    t->next=p;
-// 	    p->next=r;
-// 	}
-// 	else
-// 	{
-// 	    r=head;
-// 	    if(r->next!=t)
-// 	    {
-// 	        r=r->next;
-// 	    }
-// 	    r->next=p;
-// 	    p->next=t;
-// 	}
-// 	return head;
+    Node* z=new Node(x);
+	if(head->next==NULL)
+	{
+	    head->next=z;
+	    return head;
+	}
+	Node* t=head;
+	Node* r=head;
+	
+	while(r->next!=NULL and r->next->next!=NULL)
+	{
+	    t=t->next;
+	    r=r->next->next;
+	}
+	if(r->next==NULL)
+	{
+	    r=head;
+	    while(r->next!=t)
+	    {
+	        r=r->next;
+	    }
+	    r=t->next;
+	    t->next=z;
+	    z->next=r;
+	}
+	else
+	{
+	    r=t->next;
+	    t->next=z;
+	    z->next=r;
+	}
+	return head;
 
-//   Node* p=new Node(x);//Insertion at first
+     
+}
 //   p->next=head;
-//   return p;
 
-//     Node* p=new Node(x);//Insertion at End
-//     Node* temp=head;
-//     while(temp->next!=NULL)
-//     {
-//         temp=temp->next;
-//     }
-//     temp->next=p;
-//     return head;
+    // Node* p=new Node(x);//Insertion at End
+    // Node* temp=head;
+    // while(temp->next!=NULL)
+    // {
+    //     temp=temp->next;
+    // }
+    // temp->next=p;
+    // return head;
 // }
