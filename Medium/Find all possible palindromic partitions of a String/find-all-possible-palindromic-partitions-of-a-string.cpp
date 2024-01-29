@@ -7,19 +7,21 @@ using namespace std;
 
 class Solution {
   public:
-    void Fun(int ind, int n, string &S, vector<string>&temp, vector<vector<string>>&ans){
-        // base case
-        if(ind == n){
-            ans.push_back(temp);
+    void Fun(int ind,int n,string &S,vector<string>&temp,vector<vector<string>>&res)
+    {
+        if(ind==n)
+        {
+            res.push_back(temp);
             return;
         }
-        for(int i = ind; i < n; i++){
-            string str = S.substr(ind, i - ind + 1);
-            if(str == string(str.rbegin(), str.rend())){
+        for(int i=ind;i<n;i++)
+        {
+            string str=S.substr(ind,i-ind+1);
+            if(str==string(str.rbegin(),str.rend()))
+            {
                 temp.push_back(str);
-                Fun(i + 1, n, S, temp, ans);
+                Fun(i+1,n,S,temp,res);
                 temp.pop_back();
-                
             }
         }
     }
@@ -27,9 +29,9 @@ class Solution {
         // code here
         int n = S.size();
         vector<string>temp;
-        vector<vector<string>>ans;
-        Fun(0, n, S, temp, ans);
-        return ans;
+        vector<vector<string>>res;
+        Fun(0, n, S, temp, res);
+        return res;
     }
 };
 
