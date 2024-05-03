@@ -3,36 +3,38 @@
 using namespace std;
 
 // } Driver Code Ends
-
-
 class Solution
 {
 	public:
-    vector <int> dijkstra(int v, vector<vector<int>> adj[], int s)
+	//Function to find the shortest distance of all the vertices
+    //from the source vertex S.
+    vector <int> dijkstra(int V, vector<vector<int>> adj[], int S)
     {
-       vector<int>dis(v,INT_MAX);
-       dis[s]=0;
-       priority_queue<pair<int,int>>pq;
-       pq.push({0,s});
-       while(!pq.empty()){
-           int node=pq.top().second;
-           int wt=-1*pq.top().first;
-           
-           pq.pop();
-           for(auto it:adj[node]){
-               if(dis[it[0]]>(wt+it[1])){
-                   dis[it[0]] = wt+it[1];
-                   pq.push({-1*dis[it[0]],it[0]});
-               }
-             
-           }
-           
-           
-       }
-       return dis;
-     
+        // Code here
+        priority_queue<pair<int,int>,vector<pair<int,int>>,greater<pair<int,int>>> pq;
+        vector<int>dist(V,INT_MAX);
+        dist[S]=0;
+        pq.push({0,S});
+        while(!pq.empty())
+        {
+            int u=pq.top().second;
+            int dis=pq.top().first;
+            pq.pop();
+            for(auto it : adj[u])
+            {
+                int v=it[0];
+                int w=it[1];
+                if(dis+w<dist[v])
+                {
+                    dist[v]=dis+w;
+                    pq.push({dis+w,v});
+                }
+            }
+        }
+        return dist;
     }
 };
+
 
 //{ Driver Code Starts.
 
