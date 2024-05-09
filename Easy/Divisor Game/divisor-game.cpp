@@ -5,27 +5,12 @@ using namespace std;
 
 // } Driver Code Ends
 class Solution {
-public:
-    bool solve(int N)
-    {
-        if(N<=1)
-        {
-            return false;
-        }
-        for(int i=1;i<=N;i++)
-        {
-            if(N%i==0)
-            {
-                return !solve(N-i);
-            }
-            return false;
-        }
-    }
-    bool divisorGame(int N) {
+  public:
+    bool divisorGame(int n) {
         // code here
-        return solve(N);
+        if(n%2 ==0)return true;
+        return false;
     }
-    
 };
 
 //{ Driver Code Starts.
@@ -34,13 +19,15 @@ int main() {
     int t;
     cin >> t;
     while (t--) {
-        int N; 
-        cin >> N;
-        
+        int n;
+        cin >> n;
+
         Solution obj;
-        bool ans = obj.divisorGame(N);
-        if(ans) cout<<"True"<<endl;
-        else cout<<"False"<<endl;
+        bool ans = obj.divisorGame(n);
+        if (ans)
+            cout << "True" << endl;
+        else
+            cout << "False" << endl;
     }
     return 0;
 }
